@@ -1,0 +1,97 @@
+package org.example;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+// all the imports.
+
+public class Utils extends BasePage
+    // all the action related functions will be store in Util class as methods and it will inherit from the BasePage for driver functions .
+{
+    public static void clickOnElement(By by)
+            // created a clickOnElement() action Method to reuse it for multiple occasions : 'By' is locator key and 'by' is the locator itself.
+    {
+        driver.findElement(by).click();
+        //to perform select action on the locator.
+    }
+    public static void typeText(By by,String Data)
+            // created a typeText() method to reuse the input data function with the usage of variable String Data.
+    {
+        driver.findElement(by).sendKeys(Data);
+        //sendKeys(Data) will input the data inserted in the string 'Data'.
+    }
+    public static String getText(By by)
+            // This getText() method will return string value of the locator. 'By' is locator key and 'by' is the locator itself.
+    {
+        return driver.findElement(by).getText();
+        // this will return the data in the locator
+    }
+
+    public static String getTimeStamp()
+            // getTimeStamp() method created to use unique calendar for unique value purpose {used in register email for unique email}.
+    {
+        return new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+        //SimpleDateFormat will give the current date and time while execution in the given pattern.
+    }
+
+    public static void waitForElementToBeClickable(By by,int clickableSeconds)
+            // waitForElementToBeClickable() will wait until "clickableSeconds" period will end and then click the locator.
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(clickableSeconds));
+        // This is an Explicitly wait function.
+        wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public static void waitForElementToBeVisible(By by,int visibleSeconds)
+            //waitForElementToBeVisible() will wait until "visibleSeconds" period will end and then click the locator.
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(visibleSeconds));
+        // This is an Explicitly wait function.
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+    public static void waitForUrlToBe(String url, int urlSecond)
+            //waitForUrlToBe() will wait until "urlSeconds" period ends. here the url will be stored as 'String'.
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(urlSecond));
+        // This is an Explicitly wait function.
+        wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    public static void selectFromDropDownByVisibleTText(By by, String vText)
+            // created this method selectFromDropDownByVisibleTText() inorder to select value by visible Text.
+    {
+        Select select = new Select(driver.findElement(by));
+        //Select is a selenium import class through which we can use the drop-down select feature with the help from 'By' key of locator.
+        select.deselectByVisibleText(vText);
+        //.selectByValue will select the drop-down item by 'vText'.
+    }
+
+    public static void selectFromDropDownByValue(By by,String dropValue)
+    // created this method selectFromDropDownByValue() inorder to select value by Value.
+    {
+        Select select = new Select(driver.findElement(by));
+        //Select is a selenium import class through which we can use the drop-down select feature with the help from 'By' key of locator.
+        select.deselectByValue(dropValue);
+        //.selectByValue will select the drop-down item by 'dropValue'.
+    }
+
+    public static void selectFromDropDownByIndex(By by, int indexnum)
+    // created this method selectFromDropDownByIndex() inorder to select value by the index number.
+    {
+        Select select = new Select(driver.findElement(by));
+        //Select is a selenium import class through which we can use the drop-down select feature with the help from 'By' key of locator.
+        select.selectByIndex(indexnum);
+        //.selectByValue will select the drop-down item by 'indexnum'.
+    }
+    public static void radioButtonSelect(By by)
+            // a method to reuse the radio button feature. 'By' is locator key and 'by' is the locator itself.
+    {
+        WebElement radioButton =(driver.findElement(by));
+        //WebElement is one of our import class which we used for radiobutton feature on our locator.
+        radioButton.click();
+        //to perform select action on the radio button(locator).
+    }
+}
