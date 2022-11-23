@@ -19,17 +19,15 @@ public class Utils extends BasePage
     public static void captureScreenShot(String screenShotName)
     {
         TakesScreenshot scrShot =((TakesScreenshot)driver);
-
-        //Call getScreenshotAs method to create image file
+        //Call captureScreenShot method to create image file
 
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-        //Move image file to new destination
+        //File is an import class of commons.io used for screenshots ability.
 
         File DestFile=new File("src/ScreenShots/"+screenShotName+getTimeStamp()+".jpg");
+        //all the screenshots will be saved at this location with the name of the testcase with unique id as current time.
 
-        //Copy file at destination
-
+        //Surrounded the captureScreenShot method with try and catch for exception handling.
         try {
             FileUtils.copyFile(SrcFile, DestFile);
         } catch (IOException e) {

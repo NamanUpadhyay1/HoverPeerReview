@@ -22,11 +22,14 @@ public class BaseTest extends Utils
     @AfterMethod
     //@AfterMethod will be executed after every executed method will be finished.
     public void closing(ITestResult result)
+            //ITResult is an import class of testNG will be used at the end of every executed method,used for incorrect outcome.
     //usage of the method created in DriverManager class to recall the closing of browser function.
     {
         if (!result.isSuccess())
+        // if loop for when the executed test case does not meet the result.
         {
             captureScreenShot(result.getName());
+            //captureScreenShot method reused from utils and .getName will return the name of the method.
         }
 
         driverManager.closeBrowser();
