@@ -24,7 +24,7 @@ public class Utils extends BasePage
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
         //File is an import class of commons.io used for screenshots ability.
 
-        File DestFile=new File("src/ScreenShots/"+screenShotName+getTimeStamp()+".jpg");
+        File DestFile=new File("src/test/java/ScreenShots"+screenShotName+getTimeStamp()+".jpg");
         //all the screenshots will be saved at this location with the name of the testcase with unique id as current time.
 
         //Surrounded the captureScreenShot method with try and catch for exception handling.
