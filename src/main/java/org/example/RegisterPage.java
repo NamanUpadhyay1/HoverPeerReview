@@ -32,6 +32,7 @@ public class RegisterPage extends Utils
         Assert.assertTrue(driver.getCurrentUrl().contains("register"),"You were redirected to the wrong Url");
         //assert function will show an error msg if you are redirected to the wrong url.
 
+
         //All these methods are recalled from Utils class.
         waitForUrlToBe("https://demo.nopcommerce.com/register?returnUrl=%2F",10);
         //waitForUrlToBe() will wait until "10" period ends.

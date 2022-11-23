@@ -1,9 +1,14 @@
 package org.example;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 // all the imports.
@@ -11,8 +16,28 @@ import java.time.Duration;
 public class Utils extends BasePage
     // all the action related functions will be store in Util class as methods and it will inherit from the BasePage for driver functions .
 {
+    public static void captureScreenShot(String screenShotName)
+    {
+        TakesScreenshot scrShot =((TakesScreenshot)driver);
+
+        //Call getScreenshotAs method to create image file
+
+        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+        //Move image file to new destination
+
+        File DestFile=new File("src/ScreenShots/"+screenShotName+getTimeStamp()+".jpg");
+
+        //Copy file at destination
+
+        try {
+            FileUtils.copyFile(SrcFile, DestFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void clickOnElement(By by)
-            // created a clickOnElement() action Method to reuse it for multiple occasions : 'By' is locator key and 'by' is the locator itself.
+            //created a clickOnElement() action Method to reuse it for multiple occasions : 'By' is locator key and 'by' is the locator itself.
     {
         driver.findElement(by).click();
         //to perform select action on the locator.
