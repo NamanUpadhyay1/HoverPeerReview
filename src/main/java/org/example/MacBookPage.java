@@ -23,9 +23,9 @@ public class MacBookPage extends Utils
         //waitForUrlToBe() will wait until "15" period ends.
         clickOnElement(_emailAFriend);
         //to click the given locator
-        typeText(_friendsEmail,"Chirag@gmail.com");
+        typeText(_friendsEmail,LoadProp.getProperty("frndemail"));
         //to enter the data in the given locator.
-        typeText(_mailMessage,"You need to checkout this awesome new apple product!!");
+        typeText(_mailMessage,LoadProp.getProperty("mailmsg"));
         //to enter the data in the given locator.
         clickOnElement(_sendButton);
         //to click the given locator.

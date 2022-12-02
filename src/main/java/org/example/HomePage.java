@@ -1,5 +1,8 @@
 package org.example;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends Utils
     //HomePage class will all the functions that are done on the homepage of the given url.
@@ -24,6 +27,10 @@ public class HomePage extends Utils
     //given key of the locator at the top for ease at the time of code refinement.
     private By _returningLogInButton = By.xpath("//div[@class='buttons']//button[@type='submit']");
     //given key of the locator at the top for ease at the time of code refinement.
+
+    private By _searchBar = By.id("small-searchterms");
+
+    private By _searchSubmit = By.xpath("//button[@type=\"submit\"]");
 
     public void clickOnRegisterButton()
     // created a method with actions in it to call it in TestSuit later.
@@ -76,9 +83,9 @@ public class HomePage extends Utils
     {
         clickOnElement(_logInButton);
         //to click the given locator
-        typeText(_enterEmail,"naman@gmail.com");
+        typeText(_enterEmail,LoadProp.getProperty("loggemail"));
         //to enter the data in the given locator.
-        typeText(_enterPassword,"password123");
+        typeText(_enterPassword,LoadProp.getProperty("loggpassword"));
         //to type the data in the given locator.
         clickOnElement(_returningLogInButton);
         //to click the given locator
@@ -90,6 +97,27 @@ public class HomePage extends Utils
         //waitForUrlToBe() will wait until "10" period ends.
         clickOnElement(_appleMacBookPro);
         //to click the given locator
+    }
+    public void hoverColorOnComputersAndDesktop()
+    {
+        WebElement categoryLink = driver.findElement(By.xpath("/html/body/div[6]/div[2]/ul[1]/li[1]/a"));
+        String beforeHover = categoryLink.getCssValue("color");
+        System.out.println("Before Hover color for Computers : " + beforeHover);
+
+        waitForElementToBeClickable(_registerButton,20);
+
+        Actions builder = new Actions(driver);
+        Action mouseHoverCategory = builder.moveToElement(categoryLink).build();
+        mouseHoverCategory.perform();
+
+        String afterHover = categoryLink.getCssValue("color");
+        System.out.println("After Hover color for Computers : " + afterHover);
+    }
+    public void nikeProductsOnNikePage()
+    {
+        clickOnElement(_searchBar);
+        typeText(_searchBar,LoadProp.getProperty("search"));
+        clickOnElement(_searchSubmit);
     }
 
 }

@@ -15,7 +15,7 @@ public class CurrencyHomePage extends Utils {
         waitForUrlToBe("https://demo.nopcommerce.com/", 10);
         //waitForUrlToBe() will wait until "10" period ends.
 
-        selectFromDropDownByIndex(_currencyOption, 0);
+        selectFromDropDownByVisibleTText(_currencyOption,LoadProp.getProperty("dropdowndollar"));
         //This will select the drop-down value by the index number.(Dollar)
 
         List<WebElement> dollarProductPrices = driver.findElements(By.xpath("//span[@class=\"price actual-price\"]"));
@@ -27,7 +27,7 @@ public class CurrencyHomePage extends Utils {
             Assert.assertTrue(dollarPrices.getText().contains("$"), "Prices sorted to dollar are incorrect.");
             //Assert is an import class from testng and this is used to compare expected and actual results with specific message which is showed when the test case fails.
         }
-        selectFromDropDownByIndex(_currencyOption, 1);
+        selectFromDropDownByVisibleTText(_currencyOption,LoadProp.getProperty("dropdowneuro"));
         //This will select the drop-down value by the index number.(Euro)
 
         List<WebElement> euroProductPrices = driver.findElements(By.xpath("//span[@class=\"price actual-price\"]"));

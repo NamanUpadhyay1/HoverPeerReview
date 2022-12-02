@@ -88,7 +88,7 @@ public class Utils extends BasePage
     {
         Select select = new Select(driver.findElement(by));
         //Select is a selenium import class through which we can use the drop-down select feature with the help from 'By' key of locator.
-        select.deselectByVisibleText(vText);
+        select.selectByVisibleText(vText);
         //.selectByValue will select the drop-down item by 'vText'.
     }
 

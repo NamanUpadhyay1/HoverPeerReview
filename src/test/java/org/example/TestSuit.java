@@ -1,4 +1,5 @@
 package org.example;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class TestSuit extends BaseTest
@@ -23,6 +24,8 @@ public class TestSuit extends BaseTest
     FaceBookPage faceBookPage = new FaceBookPage();
 
     MacBookPage macBookPage = new MacBookPage();
+
+    NikePage nikePage = new NikePage();
     @Test
     // TestCase
     public void verifyRegistrationIsSuccessfulWithValidCredentials()
@@ -94,5 +97,19 @@ public class TestSuit extends BaseTest
         //to perform all the actions under directingToTheCameraPage(); method.
         cameraPhotoPage.addButtonsOnTheProductsOfCameraPhotoPage();
         //to perform all the actions under addButtonsOnTheProductsOfCameraPhotoPage(); method.
+    }
+
+    @Test
+
+    public void verifyHoverBeforeAndAfterColorOnComputersMenu()
+    {
+        homePage.hoverColorOnComputersAndDesktop();
+    }
+    @Test
+
+    public void verifyAllTheProductsListedForNikeListsNikeProductsOnly()
+    {
+        homePage.nikeProductsOnNikePage();
+        nikePage.verifyNikeProducts();
     }
 }

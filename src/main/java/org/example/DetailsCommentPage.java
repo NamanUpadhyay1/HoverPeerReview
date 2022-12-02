@@ -16,9 +16,9 @@ public class DetailsCommentPage extends Utils
     {
         waitForUrlToBe("https://demo.nopcommerce.com/nopcommerce-new-release",15);
         //waitForUrlToBe() will wait until "10" period ends.
-        typeText(_commentTitle,"test comment title.");
+        typeText(_commentTitle,LoadProp.getProperty("cmttitle"));
         //to add data as string in the given locator
-        typeText(_mainComment,"test main comment.");
+        typeText(_mainComment,LoadProp.getProperty("maincmt"));
         //to add data as string in the given locator
         clickOnElement(_submitComment);
         //to click the locator.

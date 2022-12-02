@@ -32,7 +32,6 @@ public class RegisterPage extends Utils
         Assert.assertTrue(driver.getCurrentUrl().contains("register"),"You were redirected to the wrong Url");
         //assert function will show an error msg if you are redirected to the wrong url.
 
-
         //All these methods are recalled from Utils class.
         waitForUrlToBe("https://demo.nopcommerce.com/register?returnUrl=%2F",10);
         //waitForUrlToBe() will wait until "10" period ends.
@@ -40,19 +39,19 @@ public class RegisterPage extends Utils
         // waitForElementToBeClickable() will wait until "10" period will end and then click the locator _registerButton.
         radioButtonSelect(_maleRadioButton);
         // this will select the male radiobutton with the use of locator.
-        typeText(_firstName,"Naman");
+        typeText(_firstName,LoadProp.getProperty("firstname"));
         // this will type the text "Naman" in the locator in _firstName.
-        typeText(_lastName,"Upadhyay");
+        typeText(_lastName,LoadProp.getProperty("lastname"));
         // this will type the text "Upadhyay" in the locator in _lastName.
-        selectFromDropDownByIndex(_dobDate,3);
-        selectFromDropDownByIndex(_dobMonth,5);
-        selectFromDropDownByIndex(_dobYear,10);
-        typeText(_emailField,"namanfusion123"+getTimeStamp()+"@gmail.com");
-        typeText(_companyDetails,"Info Tech");
+        selectFromDropDownByVisibleTText(_dobDate,LoadProp.getProperty("dOBDate"));
+        selectFromDropDownByVisibleTText(_dobMonth,LoadProp.getProperty("dOBMonth"));
+        selectFromDropDownByVisibleTText(_dobYear,LoadProp.getProperty("dOBYear"));
+        typeText(_emailField,LoadProp.getProperty("email1")+getTimeStamp()+LoadProp.getProperty("email2"));
+        typeText(_companyDetails,LoadProp.getProperty("companyDetails"));
         // this will type the text "Info Tech" in the locator in _companyDetails.
-        typeText(_passwordField,"password123");
+        typeText(_passwordField,LoadProp.getProperty("password"));
         // this will type the text "password123" in the locator in _passwordField.
-        typeText(_confirmPasswordField,"password123");
+        typeText(_confirmPasswordField,LoadProp.getProperty("confirmpassword"));
         // this will type the text "password123" in the locator in _confirmPasswordField.
         clickOnElement(_registrationSubmitButton);
         // this will click the element in _registrationSubmitButton.
