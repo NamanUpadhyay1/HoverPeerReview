@@ -33,7 +33,7 @@ public class RegisterPage extends Utils
         //assert function will show an error msg if you are redirected to the wrong url.
 
         //All these methods are recalled from Utils class.
-        waitForUrlToBe("https://demo.nopcommerce.com/register?returnUrl=%2F",10);
+        waitForUrlToBe("https://demo.nopcommerce.com/register?returnUrl=%2F",30);
         //waitForUrlToBe() will wait until "10" period ends.
         waitForElementToBeClickable(_registrationSubmitButton,10);
         // waitForElementToBeClickable() will wait until "10" period will end and then click the locator _registerButton.

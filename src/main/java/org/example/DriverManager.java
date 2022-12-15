@@ -16,9 +16,9 @@ public class DriverManager extends Utils
     public static final String USERNAME = LoadProp.getProperty("BROWSERSTACK_USERNAME");
     public static final String AUTOMATE_KEY = LoadProp.getProperty("BROWSERSTACK_ACCESS_KEY");
     public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-    String browserName = LoadProp.getProperty("browser");
+    String browserName = System.getProperty("browser");
     //    String browserName = System.getProperty("browser");
-    boolean runIncloud = Boolean.parseBoolean(LoadProp.getProperty("cloud"));
+    boolean runIncloud = Boolean.parseBoolean(System.getProperty("cloud"));
     MutableCapabilities capabilities = new MutableCapabilities();
 
     public void openBrowser()

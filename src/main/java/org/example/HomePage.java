@@ -11,6 +11,8 @@ public class HomePage extends Utils
     // created a specific register button object so that if in the future,if changes come then the locator can be changed from here.
     private By _electronicsButton = By.linkText("Electronics");
     //given key of the locator at the top for ease at the time of code refinement.
+
+    private By _computersButton = By.linkText("Computers");
     private By _voteButton = By.id("vote-poll-1");
     //given key of the locator at the top for ease at the time of code refinement.
     private By _newsDetailsButtton = By.xpath("//div[@class=\"buttons\"]//a[@href=\"/nopcommerce-new-release\"]");
@@ -29,7 +31,6 @@ public class HomePage extends Utils
     //given key of the locator at the top for ease at the time of code refinement.
 
     private By _searchBar = By.id("small-searchterms");
-
     private By _searchSubmit = By.xpath("//button[@type=\"submit\"]");
 
     public void clickOnRegisterButton()
@@ -42,14 +43,36 @@ public class HomePage extends Utils
         clickOnElement(_registerButton);
         //it will click the locator stored in _registerButton.
     }
+
+
+
+
     public void clickOnElectronics()
     // created a method with actions in it to call it in TestSuit later.
     {
-        waitForUrlToBe("https://demo.nopcommerce.com/",10);
+        waitForUrlToBe("https://demo.nopcommerce.com/",30);
         //waitForUrlToBe() will wait until "10" period ends.
         clickOnElement(_electronicsButton);
         //to click the given locator
     }
+//    public void clickOnComputers()
+//    {
+//        waitForUrlToBe("https://demo.nopcommerce.com/",30);
+//        clickOnElement(_computersButton);
+//    }
+
+    public void clickOnCategoryPage(String category_button)
+    {
+        waitForUrlToBe("https://demo.nopcommerce.com/",30);
+        clickOnElement(By.linkText(category_button));
+    }
+
+
+
+
+
+
+
     public void currencyOptions()
     // created a method with actions in it to call it in TestSuit later.
     {

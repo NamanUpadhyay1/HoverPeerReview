@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -116,5 +118,10 @@ public class Utils extends BasePage
         //WebElement is one of our import class which we used for radiobutton feature on our locator.
         radioButton.click();
         //to perform select action on the radio button(locator).
+    }
+    public static void assertURL(String categoryName)
+    {
+        Assert.assertTrue(driver.getCurrentUrl().contains(categoryName));
+        waitForUrlToBe(driver.getCurrentUrl(),30);
     }
 }
